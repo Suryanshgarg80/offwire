@@ -4,7 +4,7 @@
 # and installs it. Needs no admin password.
 set -euo pipefail
 NAME=Offwire-0.9.0-beta-macos-arm64
-SHA=e499e34b82d6c6c6179c4b6cd68a246cab47b3d4a3adba606cab0bec20bd9727
+SHA=f02e71fe42181dc8f439914b984eed3cdfaa3565d23fc5d38fcf95e5ccac8e53
 URL="${OFFWIRE_RELEASE_URL:-https://github.com/Suryanshgarg80/offwire/releases/download/v0.9.0-beta/Offwire-0.9.0-beta-macos-arm64.tar.gz}"
 
 [ "$(uname -s)" = Darwin ] && [ "$(uname -m)" = arm64 ] || { echo "Offwire needs an Apple Silicon Mac (M1 or newer)."; exit 1; }
