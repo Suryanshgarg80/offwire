@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offwire: a private AI for the files on your Mac</title>
+<meta name="description" content="Ask it to find anything in your files, or to brief you on one. It runs on your Mac, and nothing is uploaded.">
+<style>
+  :root{--bg:#faf9f6;--panel:#fff;--panel2:#f3f1ea;--line:#e7e4db;--txt:#1d1c19;--dim:#5e5b54;--faint:#9b978c;--accent:#1f6f54;--warn:#a8580a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:0 20px 80px}
+  header{padding:28px 0 0;display:flex;align-items:center;gap:12px}
+  .logo{font-weight:700;font-size:19px;letter-spacing:-.2px}
+  .logo span{color:var(--accent)}
+  .beta{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--dim)}
+  header a{margin-left:auto;color:var(--dim);font-size:14px}
+  h1{font:500 clamp(30px,6vw,44px)/1.15 ui-serif,"Iowan Old Style",Georgia,serif;letter-spacing:-.5px;margin:64px 0 14px;text-wrap:balance}
+  .lead{font-size:18px;color:var(--dim);margin:0 0 30px;max-width:60ch}
+  h2{font-size:19px;margin:54px 0 12px}
+  .cmd{background:var(--txt);color:#f5f3ee;border-radius:14px;padding:16px 18px;font:13.5px/1.5 ui-monospace,Menlo,monospace;overflow-x:auto;white-space:nowrap}
+  .cmdrow{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap;font-size:13.5px;color:var(--dim)}
+  button{font:inherit;font-size:13.5px;font-weight:600;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:7px 14px;cursor:pointer;color:var(--txt)}
+  .demo{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:34px;box-shadow:0 6px 24px rgba(0,0,0,.05)}
+  .q{background:var(--panel2);border-radius:16px;padding:9px 15px;width:fit-content;margin-left:auto;max-width:85%}
+  .a{margin-top:16px}
+  .chip{font-size:11.5px;background:var(--panel2);color:var(--dim);border-radius:999px;padding:1px 8px;white-space:nowrap}
+  .note{font-size:12.5px;color:var(--dim);margin-top:10px}
+  .cap{font-size:12.5px;color:var(--faint);margin-top:8px}
+  ul{padding-left:20px;margin:0}
+  li{margin:7px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .card b{display:block;margin-bottom:4px}
+  .card span{color:var(--dim);font-size:14.5px}
+  footer{margin-top:60px;color:var(--faint);font-size:13.5px}
+  a{color:var(--accent)}
+  @media (max-width:640px){.two{grid-template-columns:1fr}h1{margin-top:44px}}
+</style>
+</head>
+<body>
+<main>
+  <header><div class="logo">off<span>·</span>wire</div><span class="beta">beta</span>
+    <a href="https://github.com/Suryanshgarg80/offwire">GitHub</a></header>
+
+  <h1>A private AI for the files on your Mac.</h1>
+  <p class="lead">Ask it to find anything in your files, or to brief you on one. It runs on your Mac, and nothing is uploaded.</p>
+
+  <div class="cmd" id="cmd">curl -fsSL https://raw.githubusercontent.com/Suryanshgarg80/offwire/main/install.sh | bash</div>
+  <div class="cmdrow"><button id="copy">Copy</button>
+    <span>Paste into Terminal. Apple Silicon, macOS 14+, 8 GB. No admin password.</span></div>
+
+  <div class="demo" aria-label="An example of a question and its answer">
+    <div class="q">What does the lease say about rent?</div>
+    <div class="a">The monthly rent is ₹18,500, due on the 5th of each month, and it rises by 5% after the first year. <span class="chip">lease.pdf p.2</span></div>
+    <div class="note">Checked: all 3 numbers in this answer appear in lease.pdf.</div>
+  </div>
+  <div class="cap">An illustration of how an answer looks, not a real document.</div>
+
+  <h2>What it does</h2>
+  <div class="two">
+    <div class="card"><b>Nothing to import</b><span>It searches your whole home folder through Spotlight, then reads the best-matching files.</span></div>
+    <div class="card"><b>Briefs a file by reading it</b><span>Ask for the key points of a file and it reads the file itself, then says how much it read.</span></div>
+    <div class="card"><b>Checks its own numbers</b><span>Every number in an answer is looked up in your files. One that isn't there is underlined.</span></div>
+    <div class="card"><b>Works with Claude, if you want</b><span>An off-by-default switch lets the Claude desktop app search your files through Offwire.</span></div>
+  </div>
+
+  <h2>What to know first</h2>
+  <ul>
+    <li><b>It's slow on an 8 GB Mac.</b> An answer takes 10–20 seconds and a brief of a file 25–40. Follow-ups on the same file start in under a second.</li>
+    <li><b>It makes mistakes.</b> The model is small, and on a long file it reads only part. Check anything that matters.</li>
+    <li><b>It reads your personal files</b>, on your Mac only. Files named like passwords or keys are skipped, and you can turn whole-Mac search off.</li>
+    <li><b>It isn't signed by Apple yet</b>, which is why it installs from Terminal. The install script is short and <a href="https://github.com/Suryanshgarg80/offwire/blob/main/install.sh">readable</a>.</li>
+    <li><b>It sends nothing home.</b> I only learn what you tell me.</li>
+  </ul>
+
+  <h2>Tell me what breaks</h2>
+  <p>This is a beta made by one person. Open an <a href="https://github.com/Suryanshgarg80/offwire/issues">issue</a> with what you asked that it got wrong, or what you expected it to do.</p>
+
+  <footer>Offwire beta · <a href="https://github.com/Suryanshgarg80/offwire/blob/main/LICENSE-BETA.txt">License and terms</a> · To remove it: <code>~/.offwire/app/offwire.sh uninstall</code></footer>
+</main>
+<script>
+  document.getElementById('copy').onclick = async e => {
+    try { await navigator.clipboard.writeText(document.getElementById('cmd').textContent); e.target.textContent = 'Copied'; }
+    catch (err) { e.target.textContent = 'Select and copy the line'; }
+  };
+</script>
+</body>
+</html>

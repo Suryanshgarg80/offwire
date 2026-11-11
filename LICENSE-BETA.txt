@@ -1,0 +1,16 @@
+OFFWIRE PUBLIC BETA: LICENSE AND TERMS (DRAFT, pending legal review)
+
+Offwire is proprietary software. You may install and use this beta on your own
+computers to evaluate it. You may not copy or redistribute it, or reverse-engineer,
+decompile or disassemble it, except where the law gives you that right regardless.
+
+It is beta software: it is provided "as is", without warranty of any kind. Keep your
+own backups. AI answers can be wrong, so check important ones against the source.
+
+Your documents stay on your computer. Offwire does not send them, your questions or
+usage data anywhere. The one exception is a switch that is off unless you turn it on:
+"Let Claude search my files" lets the Claude desktop app search your files through
+Offwire, and what it finds is then sent to Anthropic as part of your chat with Claude. It contacts the internet only while installing, to download the
+AI model and its software parts.
+
+Offwire includes open-source components, listed in THIRD-PARTY.txt, under their own licenses.
