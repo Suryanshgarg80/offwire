@@ -3,9 +3,9 @@
 # the way a browser download of an unsigned app is. Fetches the release, checks it,
 # and installs it. Needs no admin password.
 set -euo pipefail
-NAME=Offwire-0.9.3-beta-macos-arm64
-SHA=2aebfb069faf76ebb85ed59e9682c7e3ba492ee10c1390652deb3db340f8cfe2
-URL="${OFFWIRE_RELEASE_URL:-https://github.com/Suryanshgarg80/offwire/releases/download/v0.9.3-beta/Offwire-0.9.3-beta-macos-arm64.tar.gz}"
+NAME=Offwire-0.9.4-beta-macos-arm64
+SHA=a0440e147645e396707e172ca69e8fcacf89e8febb042943c03485f94a1a48ae
+URL="${OFFWIRE_RELEASE_URL:-https://github.com/Suryanshgarg80/offwire/releases/download/v0.9.4-beta/Offwire-0.9.4-beta-macos-arm64.tar.gz}"
 
 [ "$(uname -s)" = Darwin ] && [ "$(uname -m)" = arm64 ] || { echo "Offwire needs an Apple Silicon Mac (M1 or newer)."; exit 1; }
 cd "$HOME"
